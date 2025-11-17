@@ -1,20 +1,35 @@
+/* Wrapper */
 .filterBar {
   margin-bottom: 2rem;
+  width: 100%;
+  margin-top: 2rem;
 }
 
+/* TOP ROW = header left + buttons right */
+.topRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 4rem; /* 4rem left + 4rem right spacing */
+}
+
+/* Header text */
 .header {
   font-size: 1.25rem;
   font-weight: 600;
   color: hsl(var(--foreground));
-  margin-bottom: 1rem;
+  margin: 0; /* Remove old margin-left */
 }
 
-.filters {
+/* Buttons container aligned right */
+.filterButtonContainer {
   display: flex;
   gap: 1rem;
-  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
+/* Buttons */
 .filterButton {
   padding: 0.5rem 1.5rem;
   border-radius: 0.5rem;
@@ -23,11 +38,27 @@
   color: hsl(var(--foreground));
   font-size: 0.875rem;
   font-weight: 500;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
   cursor: pointer;
 }
 
 .filterButton:hover {
   background-color: hsl(var(--accent));
   color: hsl(var(--accent-foreground));
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .topRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 0 1rem; /* reduce padding on mobile */
+  }
+
+  .filterButtonContainer {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
 }

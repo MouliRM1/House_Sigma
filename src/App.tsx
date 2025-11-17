@@ -4,17 +4,25 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-// Pages
-import Index from "./pages/Index";
+import Index from "./pages/Index"
 import NotFound from "./pages/NotFound";
+
+// Newly added pages
 import MapSearch from "./pages/MapSearch";
 import MarketTrends from "./pages/MarketTrends";
 import Agents from "./pages/Agents";
+
+// Tools dropdown pages
 import Blog from "./pages/Blog";
 import RecommendCommunities from "./pages/RecommendedCommunities";
 import Contact from "./pages/Contact";
-import Login from "./pages/Login";
+
+// Join page
 import Join from "./pages/Join";
+
+// Province pages (NEW)
+import BritishColumbia from "./pages/BritishColumbia";
+import Alberta from "./pages/Alberta";
 
 const queryClient = new QueryClient();
 
@@ -28,8 +36,9 @@ const App = () => (
         <Routes>
           {/* Home */}
           <Route path="/" element={<Index />} />
+          
 
-          {/* Navbar Pages */}
+          {/* Navbar navigation */}
           <Route path="/map-search" element={<MapSearch />} />
           <Route path="/market-trends" element={<MarketTrends />} />
         

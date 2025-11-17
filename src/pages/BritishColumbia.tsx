@@ -11,9 +11,6 @@ import {
   newlyListed,
   rentalInvestment,
   bestForSchools,
-  featuredListings,
-  highGrowth,
-  soldBelow
 } from '@/data/mockData';
 
 const Index = () => {
@@ -26,9 +23,6 @@ const Index = () => {
       <PropertySection title="Newly Listed" properties={newlyListed} />
       <PropertySection title="Best For Rental Investment" properties={rentalInvestment} />
       <PropertySection title="Best For Schools" properties={bestForSchools} />
-      <PropertySection title="Featured Listings" properties={featuredListings} />
-      <PropertySection title="High Growth" properties={highGrowth} />
-      <PropertySection title="Sold Below Bought" properties={soldBelow} />
       <StatsChart />
       <AgentSection />
       <CityLinks />
