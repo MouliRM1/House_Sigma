@@ -17,16 +17,6 @@ export type Agent = {
 
 const PROVINCES = ["Ontario", "British Columbia", "Alberta"] as const;
 
-/* ---------------------- CustomSelect component ---------------------- */
-/* Lightweight accessible custom dropdown that shows radio items in the panel.
-   Props:
-     - options: string[]
-     - value: string
-     - onChange: (value: string) => void
-     - placeholder: string
-     - width?: number (px) - width of the rendered button
-     - menuWidth?: number (px) - width of the dropdown menu (white box)
-*/
 function CustomSelect({
   options,
   value,
