@@ -20,9 +20,7 @@ import Contact from "./pages/Contact";
 // Join page
 import Join from "./pages/Join";
 
-// Province pages (NEW)
-import BritishColumbia from "./pages/BritishColumbia";
-import Alberta from "./pages/Alberta";
+import Login from "./pages/Login";
 
 const queryClient = new QueryClient();
 
