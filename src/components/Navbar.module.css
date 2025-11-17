@@ -1,6 +1,8 @@
-/* ============================================
-   FIXED HEADER (IDENTICAL TO HOUSESIGMA)
-   ============================================ */
+/* ===========================
+   NAVBAR MODULE (updated sizing + active underline)
+   =========================== */
+
+/* Header */
 .header {
   position: fixed;
   top: 0;
@@ -19,182 +21,357 @@ body {
   padding-top: 72px !important;
 }
 
-/* ============================================
-   CONTAINER WIDTH (HOUSESIGMA USES 1440PX)
-   ============================================ */
+/* container centers content; reduced height to match original site */
 .container {
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  height: 3.5rem; /* smaller than before (was 4.25rem) */
 }
 
-/* ============================================
-   FLEX WRAPPER
-   ============================================ */
+/* main wrapper inside container */
 .navWrapper {
   display: flex;
+  width: 100%;
   align-items: center;
   justify-content: space-between; /* left - center - right */
   width: 100%;
   height: 72px;
 }
 
-/* ============================================
-   LEFT SECTION (LOGO + PROVINCE + SEARCH)
-   ============================================ */
+/* LEFT */
 .leftSection {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 0.5rem; /* slightly reduced gap */
+  flex: 0 0 auto;
 }
 
-/* LOGO */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
 .logoBox {
+  border-radius: 0.5rem;
   background: white;
-  border-radius: 10px;
-  padding: 8px;
+  padding: 0.35rem; /* smaller icon box */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
-
 .logoIcon {
-  width: 26px;
-  height: 26px;
-  color: #009688;
+  height: 1.25rem;
+  width: 1.25rem;
+  color: hsl(var(--primary));
 }
 
 /* Province Button */
 .provinceDropdown {
   display: flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(255,255,255,0.18);
-  padding: 8px 14px;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 15px;
-  font-weight: 600;
-  transition: .2s ease;
+  align-items:center;
+  gap:0.25rem;
+  border-radius:0.375rem;
+  background-color: rgba(255,255,255,0.08);
+  padding: 0.3rem 0.6rem;
+  font-size:0.85rem;
+  font-weight:600;
+  color:white;
+  border:none;
+  cursor:pointer;
 }
+.provinceDropdown:hover { background-color: rgba(255,255,255,0.14); }
 
-.provinceDropdown:hover {
-  background: rgba(255,255,255,0.28);
-}
-
-/* SEARCH BAR */
+/* SEARCH BOX - responsive sizing (smaller and vertically centered) */
 .searchBox {
-  width: 380px; /* HouseSigma width */
-  height: 44px;
-  background: white;
-  border-radius: 8px;
-  display: flex;
+  display: none; /* hidden on small screens */
   align-items: center;
-  padding: 0 14px;
-  gap: 10px;
-  border: 1px solid #e6e6e6;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  background-color: white;
+  padding: 0.4rem 0.9rem;
+  width: 14.5rem;   /* slightly narrower */
+  flex: 0 1 380px;
+  box-sizing: border-box;
 }
-
-.searchIcon {
-  width: 18px;
-  height: 18px;
-  color: #666;
-}
-
+.searchIcon { height:0.95rem; width:0.95rem; color:hsl(var(--muted-foreground)); }
 .searchInput {
-  flex: 1;
-  border: none;
-  outline: none;
-  font-size: 15px;
-  color: #333;
+  flex:1;
+  border:none;
+  outline:none;
+  background:transparent;
+  font-size:0.875rem;
+}
+.searchInput::placeholder { color: hsl(var(--muted-foreground)); }
+
+/* Show the larger search on wide screens */
+@media (min-width: 1024px) {
+  .searchBox { display:flex; }
 }
 
-.searchInput::placeholder {
-  color: #999;
-}
-
-/* ============================================
-   CENTER NAV (EXACT CENTERED ALIGNMENT)
-   ============================================ */
+/* CENTER NAVIGATION (desktop) */
 .centerNav {
-  display: flex;
+  display: none;          /* hidden on small screens */
   align-items: center;
-  gap: 32px;
-  flex: 1;
+  gap: 1rem;
+  flex: 1 1 auto;
   justify-content: center;
 }
 
+/* desktop: show inline center nav */
+@media (min-width: 1024px) {
+  .centerNav {
+    display: flex;
+    gap: 1.2rem;
+    overflow: visible;
+    white-space: normal;
+  }
+}
+
+/* NAV LINKS (desktop) */
 .navLink {
-  color: white;
-  opacity: 0.9;
-  font-size: 15px;
-  font-weight: 500;
-  padding-bottom: 3px;
-  transition: 0.2s;
-}
-
-.navLink:hover {
-  opacity: 1;
-}
-
-.activeNavLink {
-  color: white;
-  border-bottom: 2px solid white;
+  font-size: 0.95rem;
   font-weight: 600;
-}
-
-/* TOOLS DROPDOWN */
-.toolsButton {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  background: none;
-  border: none;
   color: white;
-  font-size: 15px;
-  font-weight: 500;
-  cursor: pointer;
+  text-decoration: none;
+  padding: 0.18rem 0.5rem; /* smaller padding so nav is more compact */
+  border-radius: 6px;
+  display: inline-block;
+  transition: color 0.12s, background 0.12s;
+  white-space: nowrap;
+  position: relative; /* for underline pseudo-element */
 }
 
-/* ============================================
-   RIGHT SECTION (LOGIN + JOIN)
-   ============================================ */
+/* Hover style */
+.navLink:hover {
+  background: rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.98);
+}
+
+/* Active underline (desktop & mobile)
+   using a thin full-width white bar under the text to match original look */
+.activeNavLink,
+.navLink.active {
+  color: white;
+}
+
+/* the underline pseudo-element */
+.activeNavLink::after,
+.navLink.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 3px;               /* underline thickness */
+  border-radius: 2px;
+  background: white;         /* solid white underline */
+  bottom: -10px;             /* position the bar below the link (tweak if needed) */
+  transform-origin: center;
+}
+
+/* When nav link not active but you want a small hover underline (optional) */
+.navLink:hover::after {
+  content: "";
+  position: absolute;
+  left: 15%;
+  right: 15%;
+  height: 2px;
+  background: rgba(255,255,255,0.12);
+  bottom: -10px;
+  border-radius: 1px;
+  transition: all 120ms ease;
+}
+
+/* RIGHT */
 .rightSection {
-  display: flex;
-  align-items: center;
-  gap: 14px;
+  display:flex;
+  align-items:center;
+  gap:0.5rem;
+  flex: 0 0 auto;
 }
 
-/* FIX BUTTON STYLING */
-.rightSection button {
-  font-size: 14px !important;
-  font-weight: 500 !important;
+/* Tools button smaller */
+.toolsButton {
+  display:flex;
+  align-items:center;
+  gap:0.25rem;
+  font-size:0.85rem;
+  font-weight:600;
+  color:white;
+  background:none;
+  border:none;
+  cursor:pointer;
+  transition:0.15s;
 }
+.toolsButton:hover { color: rgba(255,255,255,0.88); }
 
-/* ============================================
-   DROPDOWN STYLING (HOUSE SIGMA MATCH)
-   ============================================ */
+/* DROPDOWN (shadcn) styles */
 .dropdownContent {
   background: white !important;
   border-radius: 10px !important;
   padding: 6px 0 !important;
-  min-width: 220px !important;
-  border: 1px solid #dadada !important;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15) !important;
+  min-width: 230px !important;
+  border: 1px solid #e5e7eb !important;
+  box-shadow: 0 5px 22px rgba(0, 0, 0, 0.15) !important;
+  margin-top: 8px !important;
+  z-index: 10001 !important;
 }
+[data-radix-popper-content-wrapper] { z-index: 10001 !important; }
+.dropdownContent a { font-size:14px; padding:10px 16px; color:#222 !important; display:block; }
+.dropdownContent a:hover { background:#f4f4f4; }
 
-.dropdownContent a {
+/* ===========================
+   HAMBURGER / MENU TOGGLE
+   =========================== */
+.menuToggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 34px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.06);
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: background 0.12s;
+  flex: 0 0 auto;
+}
+.menuToggle:hover { background: rgba(255,255,255,0.12); }
+
+/* module-scoped hamburger bar */
+.bar {
   display: block;
-  padding: 10px 16px;
-  font-size: 14px;
-  color: #222 !important;
+  width: 16px;
+  height: 2px;
+  background: white;
+  border-radius: 2px;
+  position: relative;
+}
+.bar::before,
+.bar::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 16px;
+  height: 2px;
+  background: white;
+  border-radius: 2px;
+}
+.bar::before { top: -5px; }
+.bar::after  { top: 5px; }
+
+/* ===========================
+   MOBILE PANEL & NAV
+   =========================== */
+
+.mobileMenu {
+  display: none;
 }
 
-.dropdownContent a:hover {
-  background: #f4f4f4;
+/* Show mobileMenu when header has module-scoped .menuOpen */
+.header.menuOpen .mobileMenu {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  background: hsl(var(--primary));
+  z-index: 9999;
+  padding: 0.75rem 1rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  transform-origin: top;
 }
 
-/* Dropdown wrapper fix */
-[data-radix-popper-content-wrapper] {
-  z-index: 9999 !important;
+/* mobile extras row (search, etc.) */
+.mobileExtras {
+  display:flex;
+  gap:0.5rem;
+  align-items:center;
+  margin-bottom: 0.5rem;
+}
+
+/* Mobile nav container (separate from desktop centerNav) */
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.25rem 0;
+}
+
+/* Mobile nav link style (bigger tap targets) */
+.mobileNavLink {
+  display: block;
+  padding: 0.6rem 0.75rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.12s;
+  position: relative;
+}
+
+/* mobile active underline */
+.mobileNavLink.active,
+.mobileNavLink:where(.activeNavLink) {
+  color: white;
+}
+.mobileNavLink.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: white;
+  bottom: -8px;
+  border-radius: 2px;
+}
+
+/* hover and active for mobile links */
+.mobileNavLink:hover {
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.95);
+}
+
+/* wrapper for tools dropdown inside mobile menu */
+.mobileToolsWrap {
+  margin-top: 0.25rem;
+}
+
+/* ensure dropdown content floats above mobile panel */
+.header.menuOpen .dropdownContent {
+  z-index: 10005 !important;
+}
+
+/* ===========================
+   RESPONSIVE / UTILITY
+   =========================== */
+
+/* Hide mobile toggle on large screens */
+@media (min-width: 1024px) {
+  .menuToggle { display: none; }
+  .mobileMenu { display: none !important; }
+}
+
+/* small-screen stacking fallback */
+@media (max-width: 420px) {
+  .container {
+    height:auto;
+    padding-top:0.45rem;
+    padding-bottom:0.45rem;
+    flex-direction:column;
+    align-items:stretch;
+    gap:0.25rem;
+  }
+  .navWrapper { flex-direction:row; align-items:center; gap:0.5rem; }
+}
+
+/* tweak container for very large screens */
+@media (min-width: 1280px) {
+  .container { max-width: 1400px; }
 }
