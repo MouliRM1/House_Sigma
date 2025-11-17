@@ -1,27 +1,26 @@
 /* ===========================
-   NAVBAR MODULE (updated sizing + active underline)
+   NAVBAR MODULE (HouseSigma style + responsive search)
    =========================== */
 
-/* Header */
+/* Header - fixed to top like HouseSigma */
 .header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 72px; /* HouseSigma height */
-  background: #009688; /* HouseSigma teal */
+  height: 50px; /* HouseSigma height */
+  background-color: #28a3b3;
+  color: #fff;
   display: flex;
   align-items: center;
   z-index: 2000;
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
-/* Prevent content hiding behind navbar */
-body {
-  padding-top: 72px !important;
-}
+/* If you keep the body padding, ensure it's present in global CSS: */
+   body { padding-top: 45px !important; } 
 
-/* container centers content; reduced height to match original site */
+/* container centers content; nav uses full header height */
 .container {
   width: 100%;
   max-width: 1440px;
@@ -30,16 +29,23 @@ body {
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  height: 3.5rem; /* smaller than before (was 4.25rem) */
+  height: 72px;
 }
 
-/* main wrapper inside container */
+.logoImage {
+  width: 30px;         /* adjust size as you want */
+  height: 30px;
+  object-fit: contain; /* keeps proper ratio */
+}
+
+
+/* nav wrapper */
 .navWrapper {
   display: flex;
   width: 100%;
   align-items: center;
   justify-content: space-between; /* left - center - right */
-  width: 100%;
+  gap: 1rem;
   height: 72px;
 }
 
@@ -47,7 +53,7 @@ body {
 .leftSection {
   display: flex;
   align-items: center;
-  gap: 0.5rem; /* slightly reduced gap */
+  gap: 0.5rem;
   flex: 0 0 auto;
 }
 
@@ -58,8 +64,7 @@ body {
 }
 .logoBox {
   border-radius: 0.5rem;
-  background: white;
-  padding: 0.35rem; /* smaller icon box */
+  padding: 0.35rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -86,50 +91,104 @@ body {
 }
 .provinceDropdown:hover { background-color: rgba(255,255,255,0.14); }
 
-/* SEARCH BOX - responsive sizing (smaller and vertically centered) */
+/* =========================
+   SEARCH - Desktop (HouseSigma look)
+   ========================= */
+
+/* Desktop search box (HouseSigma size) */
 .searchBox {
+  display: none; /* visible on large screens */
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  background: white;
+  padding: 0 14px;
+  width: 380px;      /* your requested width */
+  height: 35px;      /* your requested height */
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  border: 1px solid #e6e6e6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* search icon & input style */
+.searchIcon {
+  width: 18px;
+  height: 18px;
+  color: #666;
+  flex: 0 0 18px;
+}
+.searchInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  color: #333;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+}
+
+/* Show the large search on wide screens */
+@media (min-width: 1024px) {
+  .searchBox { display: flex; }
+}
+
+/* =========================
+   Compact Mobile Search
+   (small header search icon or minimal input)
+   ========================= */
+
+.compactSearch {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 8px;
+  padding: 6px;
+  min-width: 40px;
+  height: 36px;
+  cursor: pointer;
+}
+
+/* small input inside mobile menu (when expanded) */
+.mobileSearchBox {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  background: white;
+  padding: 0 12px;
+  width: 100%;
+  height: 40px;
+  box-sizing: border-box;
+  border: 1px solid #e6e6e6;
+}
+
+/* Show compactSearch on small screens and hide large search */
+@media (max-width: 1023px) {
+  .compactSearch { display: inline-flex; }
+  .searchBox { display: none !important; }
+  .mobileSearchBox { display: flex; }
+}
+
+/* =========================
+   CENTER NAVIGATION (desktop)
+   ========================= */
+
+.centerNav {
   display: none; /* hidden on small screens */
   align-items: center;
-  gap: 0.5rem;
-  border-radius: 9999px;
-  background-color: white;
-  padding: 0.4rem 0.9rem;
-  width: 14.5rem;   /* slightly narrower */
-  flex: 0 1 380px;
-  box-sizing: border-box;
-}
-.searchIcon { height:0.95rem; width:0.95rem; color:hsl(var(--muted-foreground)); }
-.searchInput {
-  flex:1;
-  border:none;
-  outline:none;
-  background:transparent;
-  font-size:0.875rem;
-}
-.searchInput::placeholder { color: hsl(var(--muted-foreground)); }
-
-/* Show the larger search on wide screens */
-@media (min-width: 1024px) {
-  .searchBox { display:flex; }
-}
-
-/* CENTER NAVIGATION (desktop) */
-.centerNav {
-  display: none;          /* hidden on small screens */
-  align-items: center;
-  gap: 1rem;
+  gap: 1.2rem;
   flex: 1 1 auto;
   justify-content: center;
 }
 
 /* desktop: show inline center nav */
 @media (min-width: 1024px) {
-  .centerNav {
-    display: flex;
-    gap: 1.2rem;
-    overflow: visible;
-    white-space: normal;
-  }
+  .centerNav { display: flex; }
 }
 
 /* NAV LINKS (desktop) */
@@ -138,42 +197,35 @@ body {
   font-weight: 600;
   color: white;
   text-decoration: none;
-  padding: 0.18rem 0.5rem; /* smaller padding so nav is more compact */
+  padding: 0.18rem 0.5rem;
   border-radius: 6px;
   display: inline-block;
   transition: color 0.12s, background 0.12s;
   white-space: nowrap;
   position: relative; /* for underline pseudo-element */
 }
-
-/* Hover style */
 .navLink:hover {
   background: rgba(255,255,255,0.05);
   color: rgba(255,255,255,0.98);
 }
 
-/* Active underline (desktop & mobile)
-   using a thin full-width white bar under the text to match original look */
+/* Active underline for links */
 .activeNavLink,
 .navLink.active {
   color: white;
 }
-
-/* the underline pseudo-element */
 .activeNavLink::after,
 .navLink.active::after {
   content: "";
   position: absolute;
   left: 0;
   right: 0;
-  height: 3px;               /* underline thickness */
+  height: 3px;
   border-radius: 2px;
-  background: white;         /* solid white underline */
-  bottom: -10px;             /* position the bar below the link (tweak if needed) */
+  background: white;
+  bottom: -10px;
   transform-origin: center;
 }
-
-/* When nav link not active but you want a small hover underline (optional) */
 .navLink:hover::after {
   content: "";
   position: absolute;
@@ -186,7 +238,10 @@ body {
   transition: all 120ms ease;
 }
 
-/* RIGHT */
+/* =========================
+   RIGHT SECTION
+   ========================= */
+
 .rightSection {
   display:flex;
   align-items:center;
@@ -194,7 +249,7 @@ body {
   flex: 0 0 auto;
 }
 
-/* Tools button smaller */
+/* Tools button */
 .toolsButton {
   display:flex;
   align-items:center;
@@ -209,7 +264,10 @@ body {
 }
 .toolsButton:hover { color: rgba(255,255,255,0.88); }
 
-/* DROPDOWN (shadcn) styles */
+/* =========================
+   DROPDOWNS
+   ========================= */
+
 .dropdownContent {
   background: white !important;
   border-radius: 10px !important;
@@ -224,9 +282,10 @@ body {
 .dropdownContent a { font-size:14px; padding:10px 16px; color:#222 !important; display:block; }
 .dropdownContent a:hover { background:#f4f4f4; }
 
-/* ===========================
-   HAMBURGER / MENU TOGGLE
-   =========================== */
+/* =========================
+   HAMBURGER MENU
+   ========================= */
+
 .menuToggle {
   display: inline-flex;
   align-items: center;
@@ -243,7 +302,6 @@ body {
 }
 .menuToggle:hover { background: rgba(255,255,255,0.12); }
 
-/* module-scoped hamburger bar */
 .bar {
   display: block;
   width: 16px;
@@ -265,15 +323,15 @@ body {
 .bar::before { top: -5px; }
 .bar::after  { top: 5px; }
 
-/* ===========================
+/* =========================
    MOBILE PANEL & NAV
-   =========================== */
+   ========================= */
 
 .mobileMenu {
   display: none;
 }
 
-/* Show mobileMenu when header has module-scoped .menuOpen */
+/* show mobile menu when header has menuOpen class (applied by React) */
 .header.menuOpen .mobileMenu {
   display: block;
   position: absolute;
@@ -287,7 +345,7 @@ body {
   transform-origin: top;
 }
 
-/* mobile extras row (search, etc.) */
+/* mobile extras row (search etc.) */
 .mobileExtras {
   display:flex;
   gap:0.5rem;
@@ -295,7 +353,12 @@ body {
   margin-bottom: 0.5rem;
 }
 
-/* Mobile nav container (separate from desktop centerNav) */
+/* mobile search (full width inside mobile panel) */
+.mobileSearchBox {
+  display: none; /* shown in mobile via media */
+}
+
+/* mobile nav container */
 .mobileNav {
   display: flex;
   flex-direction: column;
@@ -303,7 +366,7 @@ body {
   padding: 0.25rem 0;
 }
 
-/* Mobile nav link style (bigger tap targets) */
+/* mobile nav link style */
 .mobileNavLink {
   display: block;
   padding: 0.6rem 0.75rem;
@@ -315,12 +378,9 @@ body {
   transition: background 0.12s;
   position: relative;
 }
+.mobileNavLink:hover { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.95); }
 
-/* mobile active underline */
-.mobileNavLink.active,
-.mobileNavLink:where(.activeNavLink) {
-  color: white;
-}
+/* mobile underline */
 .mobileNavLink.active::after {
   content: "";
   position: absolute;
@@ -332,25 +392,14 @@ body {
   border-radius: 2px;
 }
 
-/* hover and active for mobile links */
-.mobileNavLink:hover {
-  background: rgba(255,255,255,0.06);
-  color: rgba(255,255,255,0.95);
-}
-
-/* wrapper for tools dropdown inside mobile menu */
-.mobileToolsWrap {
-  margin-top: 0.25rem;
-}
-
 /* ensure dropdown content floats above mobile panel */
 .header.menuOpen .dropdownContent {
   z-index: 10005 !important;
 }
 
-/* ===========================
+/* =========================
    RESPONSIVE / UTILITY
-   =========================== */
+   ========================= */
 
 /* Hide mobile toggle on large screens */
 @media (min-width: 1024px) {
@@ -358,20 +407,33 @@ body {
   .mobileMenu { display: none !important; }
 }
 
-/* small-screen stacking fallback */
-@media (max-width: 420px) {
-  .container {
-    height:auto;
-    padding-top:0.45rem;
-    padding-bottom:0.45rem;
-    flex-direction:column;
-    align-items:stretch;
-    gap:0.25rem;
-  }
-  .navWrapper { flex-direction:row; align-items:center; gap:0.5rem; }
+/* Mobile layout tweaks */
+@media (max-width: 1023px) {
+  /* show compact search in header */
+  .compactSearch { display: inline-flex; }
+
+  /* hide desktop nav center links */
+  .centerNav { display: none; }
+
+  /* show mobileSearchBox in mobile panel when menu open */
+  .header.menuOpen .mobileSearchBox { display: flex; }
+
+  /* make mobile menu links and search look good */
+  .mobileMenu .mobileSearchBox { margin-bottom: 0.6rem; }
+  .mobileMenu .mobileSearchBox .searchInput { font-size: 15px; }
 }
 
-/* tweak container for very large screens */
+/* Slightly smaller header footprint on very small screens */
+@media (max-width: 420px) {
+  .container {
+    padding: 0 0.75rem;
+  }
+  .logoBox { padding: 0.25rem; }
+  .provinceDropdown { padding: 0.25rem 0.45rem; font-size: 0.8rem }
+  .menuToggle { width: 36px; height: 32px; }
+}
+
+/* Large screens tweak */
 @media (min-width: 1280px) {
   .container { max-width: 1400px; }
 }
