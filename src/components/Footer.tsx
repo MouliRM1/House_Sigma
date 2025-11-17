@@ -1,5 +1,9 @@
 import { Home, Facebook, Twitter, Linkedin, Smartphone } from 'lucide-react';
 import styles from './Footer.module.css';
+import appStoreImg from "../assets/apple-appstore.png";
+import googlePlayImg from "../assets/google-play.png";
+
+
 
 const Footer = () => {
   return (
@@ -10,7 +14,7 @@ const Footer = () => {
           <div className={styles.brandColumn}>
             <div className={styles.logo}>
               <Home className={styles.logoIcon} />
-              <span style={{ fontSize: '1.25rem', fontWeight: 'bold' }}>HouseSigma</span>
+              <span style={{ fontSize: '2rem', fontWeight: 'bold' }}>HouseSigma</span>
             </div>
             <p className={styles.brandDescription}>
               Making better real estate decisions with 22 years of sales history and market insights.
@@ -66,16 +70,21 @@ const Footer = () => {
               <button className={styles.langButton}>English</button>
               <button className={styles.langButton}>中文</button>
             </div>
-            <div className={styles.appButtons}>
-              <button className={styles.appButton}>
-                <Smartphone className="h-5 w-5" />
-                <span>App Store</span>
-              </button>
-              <button className={styles.appButton}>
-                <Smartphone className="h-5 w-5" />
-                <span>Google Play</span>
-              </button>
+
+           <div className={styles.appButtons}>
+             <img
+                src={appStoreImg}
+                alt="Download on the App Store"
+                className={styles.storeImg}
+              />
+              <img
+                src={googlePlayImg}
+                alt="Get it on Google Play"
+                className={styles.storeImg}
+              />
             </div>
+
+
             <div className={styles.appVersion}>Version 2.5.0</div>
           </div>
         </div>
