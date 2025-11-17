@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { Home, Search, ChevronDown } from "lucide-react";
 import { Button } from "./ui/button";
 import LoginModal from "../pages/Login";
+import logo from "@/assets/logo.png"; 
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -56,14 +57,14 @@ const Navbar: React.FC = () => {
         aria-hidden={false}
       >
         <div className={styles.container}>
-          <div className={styles.navWrapper}>
-            {/* LEFT */}
-            <div className={styles.leftSection}>
-              <NavLink to="/" className={styles.logo}>
-                <div className={styles.logoBox}>
-                  <Home className={styles.logoIcon} />
-                </div>
-              </NavLink>
+  <div className={styles.navWrapper}>
+    {/* LEFT */}
+    <div className={styles.leftSection}>
+      <NavLink to="/" className={styles.logo}>
+        <div className={styles.logoBox}>
+          <img src={logo} alt="Logo" className={styles.logoImage} />
+        </div>
+      </NavLink>
 
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>

@@ -37,6 +37,7 @@ const App = () => (
         <Routes>
           {/* Home */}
           <Route path="/" element={<Index />} />
+          
 
           {/* Navbar navigation */}
           <Route path="/map-search" element={<MapSearch />} />

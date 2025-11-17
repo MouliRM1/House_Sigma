@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import "./Login.css";
+import googleLogo from "@/assets/google.png";
 
 interface LoginModalProps {
   isOpen: boolean;
@@ -118,16 +120,17 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
         <div className="divider"></div>
 
         {/* Google Button */}
-        <button className="google-btn">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
-            alt="google"
-          />
-          Sign in with Google
-        </button>
+       <button className="google-btn">
+  <img
+    src={googleLogo}
+    alt="google"
+    className="google-icon"
+  />
+  Sign in with Google
+</button>
 
         <p className="signup-text">
-          New user? <a href="#">Sign-up here</a>
+          New user? <NavLink to="/join">Sign-up here</NavLink>
         </p>
       </div>
     </div>

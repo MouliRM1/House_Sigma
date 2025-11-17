@@ -269,7 +269,7 @@
   border: 1px solid #dcdcdc;
   border-radius: 14px;
   padding: 18px;
-  height: 165px;
+  height: 250px;
   overflow-y: auto;
   text-align: left;
   box-shadow: 0 1px 4px rgba(0,0,0,0.05);
@@ -360,4 +360,22 @@
   font-size: 14px;
   margin-top: 5px;
   text-align: left;
+}
+
+/* The large text area that contains the terms */
+.scroll-card p {
+  font-size: 1.15rem;   /* increase from default */
+  line-height: 1.6;     /* improved readability */
+  color: #333;          /* softer dark text */
+}
+
+/* Make Step 2 headings slightly bigger */
+.scroll-card h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+/* Optional: spacing improvement */
+.scroll-card {
+  font-family: "Inter", sans-serif;
 }
