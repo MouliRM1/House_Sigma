@@ -10,12 +10,11 @@ import NotFound from "./pages/NotFound";
 // Newly added pages
 import MapSearch from "./pages/MapSearch";
 import MarketTrends from "./pages/MarketTrends";
-import HomeValuation from "./pages/HomeValuation";
 import Agents from "./pages/Agents";
 
 // Tools dropdown pages
 import Blog from "./pages/Blog";
-import RecommendCommunities from "./pages/RecommendCommunities";
+import RecommendCommunities from "./pages/RecommendedCommunities";
 import Contact from "./pages/Contact";
 
 // Join page
@@ -42,23 +41,21 @@ const App = () => (
           {/* Navbar navigation */}
           <Route path="/map-search" element={<MapSearch />} />
           <Route path="/market-trends" element={<MarketTrends />} />
-          <Route path="/home-valuation" element={<HomeValuation />} />
+        
           <Route path="/agents" element={<Agents />} />
 
-          {/* Tools dropdown */}
+          {/* Tools Dropdown */}
           <Route path="/blog" element={<Blog />} />
           <Route path="/recommend-communities" element={<RecommendCommunities />} />
           <Route path="/contact" element={<Contact />} />
 
-          {/* Province dropdown routes */}
-          <Route path="/province/on" element={<Index />} />
-         <Route path="/province/bc" element={<BritishColumbia /> }/>
-          <Route path="/province/ab" element={<Alberta />} /> 
-
-          {/* Join page */}
+          {/* Auth Pages */}
+          <Route path="/login" element={<Login isOpen={false} onClose={function (): void {
+            throw new Error("Function not implemented.");
+          } } />} />
           <Route path="/join" element={<Join />} />
 
-          {/* Catch-all */}
+          {/* Catch-All */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
